@@ -49,6 +49,47 @@ $(function () {
 					return false;
 				});
 
+
+				function createFlipSelect() {
+					var te_controls = document.querySelector('.te-controls')
+					var select = document.createElement('select')
+					var te_front = document.createElement('div')
+					var te_back = document.createElement('div')
+					var te_transition = document.querySelector('.te-transition')
+					select.id = "type"
+					var te_card = document.createElement('div')
+					var option1 = document.createElement('option')
+					var option2 = document.createElement('option')
+					var option3 = document.createElement('option')
+					var option4 = document.createElement('option')
+
+					//type selection difference
+					select.appendChild(option1)
+					select.appendChild(option2)
+					select.appendChild(option3)
+					select.appendChild(option4)
+					option1.value = "te-flip1"
+					option1.textContent = "Flip 1"
+					option1.setAttribute('selected', 'true')
+					option2.value = "te-flip2"
+					option2.textContent = "Flip 2"
+					option3.value = "te-flip3"
+					option3.textContent = "Flip 3"
+					option4.value = "te-flip4"
+					option4.textContent = "Flip 4"
+					te_controls.appendChild(select)
+					//te-transition difference
+					te_transition.classList.add("te-flip1")
+					te_transition.classList.add("te-show")
+					te_card.id = "differ"
+					te_card.classList.add("te-card")
+					te_front.classList.add("te-front")
+					te_back.classList.add("te-back")
+					te_card.appendChild(te_front)
+					te_card.appendChild(te_back)
+					te_transition.appendChild(te_card)
+				}
+				createFlipSelect();
 				if (hasPerspective) {
 					console.log(type)
 					$teWrapper.addEventListener('animationstart',
