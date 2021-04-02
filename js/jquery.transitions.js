@@ -89,7 +89,45 @@ $(function () {
 					te_card.appendChild(te_back)
 					te_transition.appendChild(te_card)
 				}
+				function createRotateSelect() {
+					//type selection difference
+					var te_controls = document.querySelector('.te-controls')
+					var select = document.createElement('select')
+					select.id = "type"
+					var option1 = document.createElement('option')
+					var option2 = document.createElement('option')
+					var option3 = document.createElement('option')
+					var option4 = document.createElement('option')
+					var option5 = document.createElement('option')
+					select.appendChild(option1)
+					select.appendChild(option2)
+					select.appendChild(option3)
+					select.appendChild(option4)
+					select.appendChild(option5)
+					option1.value = "te-rotation1"
+					option1.textContent = "Rotation 1"
+					option1.setAttribute('selected', 'true')
+					option2.value = "te-rotation2"
+					option2.textContent = "Rotation 2"
+					option3.value = "te-rotation3"
+					option3.textContent = "Rotation 3"
+					option4.value = "te-rotation4"
+					option4.textContent = "Rotation 4"
+					option5.value = "te-rotation5"
+					option5.textContent = "Rotation 5"
+					te_controls.appendChild(select)
+					//te-transition difference
+					var te_front = document.createElement('div')
+					var te_back = document.createElement('div')
+					var te_transition = document.querySelector('.te-transition')
+					te_card.id = "differ"
+					te_front.classList.add("te-front")
+					te_back.classList.add("te-back")
+					te_transition.appendChild(te_front)
+					te_transition.appendChild(te_back)
+				}
 				createFlipSelect();
+				createRotateSelect();
 				if (hasPerspective) {
 					console.log(type)
 					$teWrapper.addEventListener('animationstart',
