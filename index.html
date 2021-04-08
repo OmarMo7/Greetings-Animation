@@ -18,7 +18,7 @@
 	<link rel="shortcut icon" href="../favicon.ico">
 	<link rel="stylesheet" type="text/css" href="css/demo.css" />
 	<link rel="stylesheet" type="text/css" href="css/style1.css" />
-	<script type="text/javascript" src="js/modernizr.custom.70748.js"></script>
+	<!-- <script type="text/javascript" src="js/modernizr.custom.70748.js"></script> -->
 </head>
 
 <body>
@@ -38,26 +38,24 @@
 		<header>
 			<h1>Experimental <span>CSS3</span> Animations <span>for (3D) Image Transitions <strong id="message">Webkit
 						only!</strong></span></h1>
-			<p class="codrops-demos">
-				<a class="current-demo" href="index.html">Flip</a>
-				<a href="index2.html">Rotation</a>
-				<a href="index3.html">Multi-flip</a>
-				<a href="index4.html">Cube</a>
-				<a href="index5.html">Unfold</a>
-				<a href="index6.html">Others</a>
+			<p class="codrops-demos" id="">
+				<a class="current-demo EffectTypes" href="index.html">Flip</a>
+				<a class="EffectTypes" href="index2.html">Rotation</a>
+				<a class="EffectTypes" href="index3.html">Multi-flip</a>
+				<a class="EffectTypes" href="index4.html">Cube</a>
+				<a class="EffectTypes" href="index5.html">Unfold</a>
+				<a class="EffectTypes" href="index6.html">Others</a>
 			</p>
 		</header>
-
 		<div class="te-container">
 
 			<div class="te-controls">
-				//different
-				<!-- <select id="type">
+				<select id="type">
 					<option value="te-flip1" selected>Flip 1</option>
 					<option value="te-flip2">Flip 2</option>
 					<option value="te-flip3">Flip 3</option>
 					<option value="te-flip4">Flip 4</option>
-				</select> -->
+				</select>
 				<a id="te-next" href="#" class="te-next">next</a>
 				<div class="te-shadow"></div>
 			</div>
@@ -75,20 +73,19 @@
 				<div class="te-cover te-hide">
 					<img src="images/1.jpg" />
 				</div>
-				//different
-				<!-- <div class="te-transition te-flip1 te-show">
+				<div class="te-transition te-flip1 te-show">
 					<div class="te-card" id="differ">
 						<div class="te-front"></div>
 						<div class="te-back"></div>
 					</div>
-				</div> -->
+				</div>
 
 			</div>
 
 		</div>
 	</div>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script type="text/javascript" src="js/jquery.transitions.js"></script>
+	<script type="text/javascript" src="js/appOld.js"></script>
 
 	<script type="text/javascript" src="js/demo.js"></script>
 </body>
