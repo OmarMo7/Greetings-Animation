@@ -14,19 +14,7 @@ $(function () {
   }
 
 
-  //else if ($typeValue.includes("rotation")) {
-  //   window.location.pathname =
-  //     "C:/Users/EGYPT/Downloads/Compressed/ImageTransitions/ImageTransitions/index2.html";
-  // } else if ($typeValue.includes("flip")) {
-  //   window.location.pathname =
-  //     "C:/Users/EGYPT/Downloads/Compressed/ImageTransitions/ImageTransitions/index.html";
-  // } else if ($typeValue.includes("cube")) {
-  //   window.location.pathname =
-  //     "C:/Users/EGYPT/Downloads/Compressed/ImageTransitions/ImageTransitions/index4.html";
-  // } else if ($typeValue.includes("unfold")) {
-  //   window.location.pathname =
-  //     "C:/Users/EGYPT/Downloads/Compressed/ImageTransitions/ImageTransitions/index5.html";
-  // }
+  
   function createMultiFlipSelect(te_transition, $typeValue) {
 
     var AllStyleFiles = document.querySelectorAll('head .style')
@@ -38,34 +26,17 @@ $(function () {
       if (document.querySelector('head').contains(styleFile)) { console.log("contains"); return; }
       else document.querySelector('head').innerHTML += '<link rel="stylesheet" type="text/css" id="style3" class="style" href="css/style3.css" />'
     })
-    // var link = document.createElement('link')
-    // link.rel = "stylesheet"
-    // link.type = "text/css"
-    // link.href = "../css/style3.css"
-    // var body = document.querySelector('head')
-    // document.body.insertBefore(link, body)
-    // te_transition.classList.forEach(classs => {
-    //   console.log(classs)
-    //   if (classs != "te-transition") {
-    //     te_transition.classList.remove(classs)
-    //     console.log('removed')
-    //   }
-    // })
+    
     for (let i = 0; i < 7; i++) {
-      // var img = document.createElement('img')
-      // var imgNext = document.createElement('img')
+      
       var te_front = document.createElement('div')
       var te_back = document.createElement('div')
       var te_card = document.createElement('div')
-      // img.src = $teImagesSrc[2]
-      // imgNext.src = $teImagesSrc[3]
       te_card.classList.add("te-card")
       te_card.classList.add(`te-flip${i + 1}`)
       console.log(`te-flip${i + 1}`)
       te_front.classList.add("te-front")
-      // te_front.appendChild(img)
       te_back.classList.add("te-back")
-      // te_back.appendChild(imgNext)
       te_card.appendChild(te_front)
       te_card.appendChild(te_back)
       te_transition.appendChild(te_card)
@@ -83,36 +54,11 @@ $(function () {
       if (document.querySelector('head').contains(styleFile)) { console.log("contains"); return; }
       else document.querySelector('head').innerHTML += '<link rel="stylesheet" type="text/css" id="style2" class="style" href="css/style2.css" />'
     })
-    // var link = document.createElement('link')
-    // link.rel = "stylesheet"
-    // link.type = "text/css"
-    // link.href = "../css/style3.css"
-    // var body = document.querySelector('head')
-    // document.body.insertBefore(link, body)
+
     var te_front = document.createElement('div')
     var te_back = document.createElement('div')
-
-
-    // te_transition.classList.forEach(classs => {
-    //   console.log(classs)
-    //   if (classs != "te-transition") {
-    //     te_transition.classList.remove(classs)
-    //     console.log('removed')
-    //   }
-    // })
-    //te-transition difference
-
-    // var img = document.createElement('img')
-    // var imgNext = document.createElement('img')
-    // img.src = $teImagesSrc[2]
-    // imgNext.src = $teImagesSrc[3]
-    // te_transition.innerHTML = `
-    // 			<div class="te-front"></div>
-    // 			<div class="te-back"></div>`
     te_front.classList.add("te-front")
-    // te_front.appendChild(img)
     te_back.classList.add("te-back")
-    // te_back.appendChild(imgNext)
     te_transition.appendChild(te_front)
     te_transition.appendChild(te_back)
   }
@@ -131,14 +77,6 @@ $(function () {
     var te_front = document.createElement('div')
     var te_back = document.createElement('div')
     var te_card = document.createElement('div')
-
-    // te_transition.classList.forEach(classs => {
-    //   console.log(classs)
-    //   if (classs != "te-transition") {
-    //     te_transition.classList.remove(classs)
-    //     console.log('removed')
-    //   }
-    // })
     te_transition.classList.add("te-flip1")
     te_transition.classList.add("te-show")
     te_card.classList.add("te-card")
@@ -161,13 +99,6 @@ $(function () {
       else document.querySelector('head').innerHTML += '<link rel="stylesheet" type="text/css" id="style4" class="style" href="css/style4.css" />'
     })
     //te-transition difference
-    // te_transition.classList.forEach(classs => {
-    //   console.log(classs)
-    //   if (classs != "te-transition") {
-    //     te_transition.classList.remove(classs)
-    //     console.log('removed')
-    //   }
-    // })
     var divFront = document.createElement('div')
     var divTop = document.createElement('div')
     var divBottom = document.createElement('div')
@@ -211,14 +142,6 @@ $(function () {
       if (document.querySelector('head').contains(styleFile)) return;
       else document.querySelector('head').innerHTML += '<link rel="stylesheet" type="text/css" id="style5" class="style" href="css/style5.css" />'
     })
-    //te-transition difference
-    // te_transition.classList.forEach(classs => {
-    //   console.log(classs)
-    //   if (classs != "te-transition") {
-    //     te_transition.classList.remove(classs)
-    //     console.log('removed')
-    //   }
-    // })
     var divFront1 = document.createElement('div')
     var divFront2 = document.createElement('div')
     var divFront3 = document.createElement('div')
@@ -274,7 +197,6 @@ $(function () {
       last_img = 0,
       $navNext = document.getElementById("te-next"), //Next button
       $type = document.querySelector("#type"), //Flip1-flip2.....
-      // $typeValue = $type.value,
       $teTransition = $teWrapper.querySelector(".te-transition"),
       $teTransition2 = $teWrapper2.find(".te-transition"), // requires perspective
       $wPerspective = [
@@ -312,7 +234,6 @@ $(function () {
         })
         console.log(num);
         console.log($typeValue);
-        // $teTransition.classList.add($typeValue);
 
         if ($typeValue.includes("multiflip")) {
           createMultiFlipSelect(te_transition, $typeValue);
@@ -336,7 +257,6 @@ $(function () {
         $teTransition.classList.add('te-transition')
         $teTransition.classList.add($typeValue)
         showNext($typeValue);
-        // return false;
         if (hasPerspective) {
           console.log(type);
           $teWrapper.addEventListener(
@@ -362,18 +282,6 @@ $(function () {
             })
           );
         }
-
-        // $type.addEventListener('change', function (event) {
-        //   // $typeValue = this.value
-        //   console.log($typeValue)
-        // $teTransition.classList.forEach(classs => {
-        //   $teTransition.classList.remove(classs)
-        // })
-        // $teTransition.classList.add('te-transition')
-        // $teTransition.classList.add($typeValue)
-
-
-        // });
       },
       showNext = ($typeValue) => {
         console.log($typeValue);
@@ -406,8 +314,8 @@ $(function () {
         // $teCover2.find('img').attr('src', $currentImg.attr('src'));
 
         /** test2 */
-        var $back = $teTransition2.find('div.te-back'),
-          $front = $teTransition2.find('div.te-front');
+        // var $back = $teTransition2.find('div.te-back'),
+        //   $front = $teTransition2.find('div.te-front');
         var back = $teTransition.querySelector("div.te-back"),
           front = $teTransition.querySelector("div.te-front");
         current_img == imagesCount - 1
@@ -415,16 +323,12 @@ $(function () {
           : ((last_img = current_img), ++current_img);
         var last_img_src = $teImages.item(last_img).getAttribute("src"),
           current_img_src = $teImages.item(current_img).getAttribute("src");
-
         while (front.firstChild) {
           front.removeChild(front.firstChild);
         }
-        // front.innerHTML = '<img src="' + last_img_src + '">';
         while (back.firstChild) {
           back.removeChild(back.firstChild);
         }
-        // back.innerHTML = '<img src="' + current_img_src + '">';
-
         var img_front = document.createElement("img");
         var img_back = document.createElement("img");
         img_front.src = last_img_src;
