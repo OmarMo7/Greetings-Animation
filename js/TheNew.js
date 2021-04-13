@@ -14,7 +14,7 @@ $(function () {
   }
 
 
-  
+
   function createMultiFlipSelect(te_transition, $typeValue) {
 
     var AllStyleFiles = document.querySelectorAll('head .style')
@@ -26,9 +26,9 @@ $(function () {
       if (document.querySelector('head').contains(styleFile)) { console.log("contains"); return; }
       else document.querySelector('head').innerHTML += '<link rel="stylesheet" type="text/css" id="style3" class="style" href="css/style3.css" />'
     })
-    
+
     for (let i = 0; i < 7; i++) {
-      
+
       var te_front = document.createElement('div')
       var te_back = document.createElement('div')
       var te_card = document.createElement('div')
@@ -254,7 +254,9 @@ $(function () {
         if (hasPerspective && animated) return false;
 
         animated = true;
-        $teTransition.classList.add('te-transition')
+        if (!$teTransition.classList.contains("te-transition")){
+          $teTransition.classList.add('te-transition')
+        }
         $teTransition.classList.add($typeValue)
         showNext($typeValue);
         if (hasPerspective) {
@@ -362,6 +364,12 @@ $(function () {
     return { init: init };
   })();
   var i = 0;
+  var backImg = document.querySelector('.te-cover img')
   TransitionEffects.init(15);
-  // setInterval(() => { var num = randomNumber(0, 17); TransitionEffects.init(num); console.log("gonna"); }, 3000)
+
+  setInterval(() => {
+    var num = randomNumber(0, 17);
+    document.body.style.backgroundImage = `url('${backImg.src}')`
+    TransitionEffects.init(num); console.log("gonna");
+  }, 3000)
 });
