@@ -15,7 +15,7 @@ $(function () {
 
 
 
-  function createMultiFlipSelect(te_transition, $typeValue) {
+  function createMultiFlipSelect($teTransition) {
 
     var AllStyleFiles = document.querySelectorAll('head .style')
     AllStyleFiles.forEach(styleFile => {
@@ -39,11 +39,11 @@ $(function () {
       te_back.classList.add("te-back")
       te_card.appendChild(te_front)
       te_card.appendChild(te_back)
-      te_transition.appendChild(te_card)
+      $teTransition.appendChild(te_card)
     }
   }
 
-  function createRotateSelect(te_transition, $typeValue) {
+  function createRotateSelect($teTransition) {
 
     var AllStyleFiles = document.querySelectorAll('head .style')
     AllStyleFiles.forEach(styleFile => {
@@ -59,11 +59,11 @@ $(function () {
     var te_back = document.createElement('div')
     te_front.classList.add("te-front")
     te_back.classList.add("te-back")
-    te_transition.appendChild(te_front)
-    te_transition.appendChild(te_back)
+    $teTransition.appendChild(te_front)
+    $teTransition.appendChild(te_back)
   }
 
-  function createFlipSelect(te_transition, $typeValue) {
+  function createFlipSelect($teTransition) {
     var AllStyleFiles = document.querySelectorAll('head .style')
     AllStyleFiles.forEach(styleFile => {
       console.log(styleFile)
@@ -77,17 +77,17 @@ $(function () {
     var te_front = document.createElement('div')
     var te_back = document.createElement('div')
     var te_card = document.createElement('div')
-    te_transition.classList.add("te-flip1")
-    te_transition.classList.add("te-show")
+    $teTransition.classList.add("te-flip1")
+    $teTransition.classList.add("te-show")
     te_card.classList.add("te-card")
     te_front.classList.add("te-front")
     te_back.classList.add("te-back")
     te_card.appendChild(te_front)
     te_card.appendChild(te_back)
-    te_transition.appendChild(te_card)
+    $teTransition.appendChild(te_card)
   }
 
-  function createCubeSelect(te_transition, $typeValue) {
+  function createCubeSelect($teTransition) {
 
     var AllStyleFiles = document.querySelectorAll('head .style')
     AllStyleFiles.forEach(styleFile => {
@@ -125,13 +125,13 @@ $(function () {
     divLeft.classList.add('te-cube-face')
     divLeft.classList.add('te-back')
 
-    te_transition.appendChild(divFront)
-    te_transition.appendChild(divTop)
-    te_transition.appendChild(divBottom)
-    te_transition.appendChild(divRight)
-    te_transition.appendChild(divLeft)
+    $teTransition.appendChild(divFront)
+    $teTransition.appendChild(divTop)
+    $teTransition.appendChild(divBottom)
+    $teTransition.appendChild(divRight)
+    $teTransition.appendChild(divLeft)
   }
-  function createUnfoldSelect(te_transition) {
+  function createUnfoldSelect($teTransition) {
 
     var AllStyleFiles = document.querySelectorAll('head .style')
     AllStyleFiles.forEach(styleFile => {
@@ -163,40 +163,42 @@ $(function () {
     divBack3.classList.add('te-back')
     divBack3.classList.add('te-back3')
 
-    te_transition.appendChild(divFront1)
-    te_transition.appendChild(divFront2)
-    te_transition.appendChild(divFront3)
-    te_transition.appendChild(divBack1)
-    te_transition.appendChild(divBack2)
-    te_transition.appendChild(divBack3)
+    $teTransition.appendChild(divFront1)
+    $teTransition.appendChild(divFront2)
+    $teTransition.appendChild(divFront3)
+    $teTransition.appendChild(divBack1)
+    $teTransition.appendChild(divBack2)
+    $teTransition.appendChild(divBack3)
   }
 
-  function createOtherSelect() {
+  function createOtherSelect($teTransition) {
+    var AllStyleFiles = document.querySelectorAll('head .style')
+    AllStyleFiles.forEach(styleFile => {
+      console.log(styleFile)
+      if (styleFile.id != "style6") {
+        document.querySelector('head').removeChild(styleFile)
+      }
+      if (document.querySelector('head').contains(styleFile)) return;
+      else document.querySelector('head').innerHTML += '<link rel="stylesheet" type="text/css" id="style6" class="style" href="css/style6.css" />'
+    })
     //te-transition difference
     var te_front = document.createElement('div')
     var te_back = document.createElement('div')
-    var te_transition = document.querySelector('.te-transition')
-    while (te_transition.firstChild) {
-      te_transition.removeChild(te_transition.firstChild)
-    }
+
     te_front.classList.add("te-front")
     te_back.classList.add("te-back")
-    te_card.appendChild(te_front)
-    te_card.appendChild(te_back)
+    $teTransition.appendChild(te_front)
+    $teTransition.appendChild(te_back)
   }
 
   var TransitionEffects = (function () {
     var $teWrapper = document.getElementById("te-wrapper"), //Selected only  to pick elements from
       $teWrapper2 = $("#te-wrapper"),
       $teCover = $teWrapper.querySelector(".te-cover"),
-      $teCover2 = $teWrapper2.find("div.te-cover"),
       $teImages = $teWrapper.querySelectorAll(".te-images > img"),
-      $teImages2 = $teWrapper2.find("div.te-images > img"),
       imagesCount = $teImages.length,
       current_img = 0,
       last_img = 0,
-      $navNext = document.getElementById("te-next"), //Next button
-      $type = document.querySelector("#type"), //Flip1-flip2.....
       $teTransition = $teWrapper.querySelector(".te-transition"),
       $teTransition2 = $teWrapper2.find(".te-transition"), // requires perspective
       $wPerspective = [
@@ -218,69 +220,67 @@ $(function () {
         "te-cube4",
         "te-unfold1",
         "te-unfold2",
+        "te-example1",
+        "te-example2",
+        "te-example3",
+        "te-example4",
+        "te-example5",
+        "te-example6",
+        "te-example7"
       ],
       animated = false,
       // check for support
       hasPerspective = true,
       init = function (num) {
-        var te_transition = document.querySelector('.te-transition')
-          , $typeValue = $wPerspective[num];
-        while (te_transition.firstChild) {
-          te_transition.removeChild(te_transition.firstChild)
+        var $typeValue = $wPerspective[num];
+        while ($teTransition.firstChild) {
+          $teTransition.removeChild($teTransition.firstChild)
         }
-        te_transition.classList.forEach(classs => {
+        $teTransition.classList.forEach(classs => {
           console.log(classs)
-          te_transition.classList.remove(classs)
+          $teTransition.classList.remove(classs)
         })
         console.log(num);
         console.log($typeValue);
 
         if ($typeValue.includes("multiflip")) {
-          createMultiFlipSelect(te_transition, $typeValue);
+          createMultiFlipSelect($teTransition);
         }
         else if ($typeValue.includes("rotation")) {
-          createRotateSelect(te_transition, $typeValue);
+          createRotateSelect($teTransition);
         }
         else if ($typeValue.includes("flip")) {
-          createFlipSelect(te_transition, $typeValue);
+          createFlipSelect($teTransition);
         }
         else if ($typeValue.includes("cube")) {
-          createCubeSelect(te_transition, $typeValue);
+          createCubeSelect($teTransition);
         }
         else if ($typeValue.includes("unfold")) {
-          createUnfoldSelect(te_transition, $typeValue);
+          createUnfoldSelect($teTransition);
+        }
+        else if ($typeValue.includes("example")) {
+          createOtherSelect($teTransition);
         }
 
         if (hasPerspective && animated) return false;
 
         animated = true;
-        if (!$teTransition.classList.contains("te-transition")){
+        if (!$teTransition.classList.contains("te-transition")) {
           $teTransition.classList.add('te-transition')
         }
         $teTransition.classList.add($typeValue)
         showNext($typeValue);
         if (hasPerspective) {
-          console.log(type);
           $teWrapper.addEventListener(
             "animationstart",
             function (event) {
-              $type.style.setProperty("disabled", true);
             },
             addEventListener("animationend", function (event) {
-              if (
-                (type === "te-unfold1" &&
-                  event.originalEvent.animationName !== "unfold1_3Back") ||
-                (type === "te-unfold2" &&
-                  event.originalEvent.animationName !== "unfold2_3Back")
-              )
-                return false;
-
               $teCover.classList.remove("te-hide");
               if ($wPerspective.includes($typeValue))
                 $teWrapper.classList.remove("te-perspective");
               $teTransition.classList.remove("te-show");
               animated = false;
-              $type.style.setProperty("disabled", false);
             })
           );
         }
@@ -359,17 +359,17 @@ $(function () {
 
         var cover = $teCover.querySelector("img");
         cover.setAttribute("src", current_img_src);
+        // cover.classList.add('rounded')
       };
 
     return { init: init };
   })();
   var i = 0;
-  var backImg = document.querySelector('.te-cover img')
-  TransitionEffects.init(15);
+  TransitionEffects.init(17);
 
-  setInterval(() => {
-    var num = randomNumber(0, 17);
-    document.body.style.backgroundImage = `url('${backImg.src}')`
-    TransitionEffects.init(num); console.log("gonna");
-  }, 3000)
+  // setInterval(() => {
+  //   var backImg = document.querySelector('.te-cover img')
+  //   var num = randomNumber(0, 24);
+  //   TransitionEffects.init(num); console.log("gonna");
+  // }, 3000)
 });
