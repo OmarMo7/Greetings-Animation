@@ -18,7 +18,11 @@ $(function () {
 
   var colors2 = ['rgb(51, 80, 153)', 'rgb(0, 80, 204)', 'rgb(0, 80, 255)', 'rgb(51, 80, 255)', 'rgb(204, 80, 255)', 'rgb(255, 80, 255)', 'rgb(255, 80, 204)', 'rgb(255, 80, 153)', 'rgb(255, 80, 102)', 'rgb(204, 80, 102)', 'rgb(153, 80, 51)']
 
-  
+  const Ezz = {
+    name: "Zezo",
+    password: "zzz"
+  };
+
   var width = ['22', '26', '30', '35']
 
   function createMultiFlipSelect($teTransition) {
@@ -373,31 +377,129 @@ $(function () {
 
     return { init: init };
   })();
-  TransitionEffects.init(17);
-  document.body.setAttribute('style', `background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${width[0]}' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='${colors[0]}' fill-opacity='0.2' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`)
-  var i = 1;
-  var j = 1;
-  setInterval(() => {
-    var styles = {
-      "transition": "all 1s ease-out",
-      "background": `${colors[i++]}`,
-      "background-image": `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${width[j++]}' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='${colors2[i]}' fill-opacity='0.4' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-    };
+  function refreshPage() {
+    window.location.reload();
+  }
 
-    Object.assign(document.body.style, styles)
-    if (i == colors.length) i = 0
-    if (j == width.length) j = 0
-  }, 4000)
-  setInterval(() => {
-    // var backImg = document.querySelector('.te-cover img')
-    var imgs = document.querySelectorAll('img')
-    var num = randomNumber(0, 24);
-    imgs.forEach(img => {
-      if (!img.classList.contains('border-radius')) {
-        console.log(img)
-        img.classList.add('border-radius')
-      }
+  performAction = function () {
+    TransitionEffects.init(17);
+    document.body.setAttribute('style', `background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${width[0]}' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='${colors[0]}' fill-opacity='0.2' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`)
+    var i = 1;
+    var j = 1;
+    setInterval(() => {
+      var styles = {
+        "transition": "all 1s ease-out",
+        "background": `${colors[i++]}`,
+        "background-image": `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${width[j++]}' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='${colors2[i]}' fill-opacity='0.4' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+      };
+
+      Object.assign(document.body.style, styles)
+      if (i == colors.length) i = 0
+      if (j == width.length) j = 0
+    }, 4000)
+    setInterval(() => {
+      // var backImg = document.querySelector('.te-cover img')
+      var imgs = document.querySelectorAll('img')
+      var num = randomNumber(0, 24);
+      imgs.forEach(img => {
+        if (!img.classList.contains('border-radius')) {
+          console.log(img)
+          img.classList.add('border-radius')
+        }
+      })
+      TransitionEffects.init(17); console.log("gonna");
+    }, 4000)
+  }
+  performLogin = function () {
+    if (localStorage.getItem('name') != null && localStorage.getItem('password') != null &&
+      localStorage.getItem('name') == Ezz.name && localStorage.getItem('password') == Ezz.password) {
+      performAction();
+      localStorage.removeItem('name'); localStorage.removeItem('password');
+      return;
+    }
+    if (document.querySelector('form') != null) return;
+    var form = document.createElement('form')
+    var container = document.createElement('div')
+    var labelUser = document.createElement('label')
+    var labelPassword = document.createElement('label')
+    var userInput = document.createElement('input')
+    var passInput = document.createElement('input')
+    var loginButton = document.createElement('button')
+    // errorText = document.createElement('label')
+
+    labelUser.innerHTML = '<b>Username</b>'
+    labelPassword.innerHTML = '<b>Password</b>'
+    labelUser.setAttribute('for', 'uname')
+    labelUser.id = "uname"
+    labelPassword.setAttribute('for', 'psw')
+    labelPassword.id = "psw"
+    userInput.setAttribute('type', 'text')
+    passInput.setAttribute('type', 'password')
+    loginButton.setAttribute('type', 'submit')
+    userInput.setAttribute('placeholder', 'Enter Username')
+    passInput.setAttribute('placeholder', 'Enter Password')
+    userInput.setAttribute('name', 'uname')
+    passInput.setAttribute('name', 'psw')
+    userInput.setAttribute('required', '')
+    passInput.setAttribute('required', '')
+    form.setAttribute('method', 'post')
+    userInput.id = 'username'
+    passInput.id = 'password'
+    loginButton.id = 'login'
+
+
+    container.classList.add('form')
+    container.id = "formContainer"
+    container.appendChild(labelUser)
+    container.appendChild(userInput)
+    container.appendChild(labelPassword)
+    container.appendChild(passInput)
+    container.appendChild(loginButton)
+    form.appendChild(container)
+    var container = document.querySelector('.container')
+    document.body.insertBefore(form, container)
+    var display = {
+      "display": "none"
+    };
+    Object.assign(container.style, display)
+    loginButton = document.querySelector('#login');
+    loginButton.textContent = "Login"
+    loginButton.addEventListener('click', () => {
+      console.log('clicked')
+      console.log(userInput.value)
+      console.log(passInput.value)
+      console.log(localStorage.getItem('name'))
+      console.log(localStorage.getItem('password'))
+      localStorage.setItem('name', userInput.value)
+      localStorage.setItem('password', passInput.value)
+      verifyUser(localStorage.getItem('name'), localStorage.getItem('password'));
     })
-    TransitionEffects.init(16); console.log("gonna");
-  }, 4000)
+  }
+  verifyUser = function (user, pass) {
+    if (user == "Zezo" && pass == "zzz") {
+      console.log("right")
+      var container = document.querySelector('.container')
+      var form = document.querySelector('form')
+      console.log(form)
+      console.log(container)
+      var display = {
+        "display": "",
+        "width": "100%",
+        "position": "relative",
+        "text-align": "center"
+      };
+      var displayForm = {
+        "display": "none"
+      };
+      Object.assign(container.style, display)
+      Object.assign(form.style, displayForm)
+      container.setAttribute('style', 'display:block;')
+      console.log(form)
+      console.log(container)
+      refreshPage()
+      performAction()
+    }
+    else { console.log('else'); performLogin() }
+  }
+  performLogin();
 });
