@@ -13,6 +13,8 @@ $(function () {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
+  var colors = ['#ff4d4d', '#e60000', '#800000', '#ffbf00', '#00ff80', '#0080ff', '#8000ff', '#ff00ff']
+  var colors2 = ['%23cb1818', '%23cb5718', '%23cb9618', '%2351a713', '%2313a772', '%231367a7', '%235b13a7', '%23a7134a']
 
 
   function createMultiFlipSelect($teTransition) {
@@ -232,6 +234,7 @@ $(function () {
       // check for support
       hasPerspective = true,
       init = function (num) {
+
         var $typeValue = $wPerspective[num];
         while ($teTransition.firstChild) {
           $teTransition.removeChild($teTransition.firstChild)
@@ -362,14 +365,33 @@ $(function () {
         // cover.classList.add('rounded')
       };
 
+
+
     return { init: init };
   })();
-  var i = 0;
-  TransitionEffects.init(17);
+  // TransitionEffects.init(17);
+  document.body.setAttribute('style', `background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='${colors2[0]}' fill-opacity='0.3' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`)
+  var i = 1;
+  setInterval(() => {
+    document.body.setAttribute('style', `background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='${colors2[i++]}' fill-opacity='0.3' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`)
+    var styles = {
+      "transition": "1s ease-out",
+      "transition-property": "opacity"
+    };
 
+    Object.assign(document.body.style, styles)
+    if (i == colors.length) i = 0
+  }, 2000)
   // setInterval(() => {
-  //   var backImg = document.querySelector('.te-cover img')
+  //   // var backImg = document.querySelector('.te-cover img')
+  //   var imgs = document.querySelectorAll('img')
   //   var num = randomNumber(0, 24);
-  //   TransitionEffects.init(num); console.log("gonna");
-  // }, 3000)
+  //   imgs.forEach(img => {
+  //     if (!img.classList.contains('border-radius')) {
+  //       console.log(img)
+  //       img.classList.add('border-radius')
+  //     }
+  //   })
+  //   TransitionEffects.init(16); console.log("gonna");
+  // }, 4000)
 });
