@@ -383,7 +383,12 @@ $(function () {
   }
 
   performAction = function () {
-    TransitionEffects.init(17);
+    var te_cover = document.querySelector('.te-cover')
+    var te_shadow = document.querySelector('.te-shadow')
+    te_cover.classList.remove('te-hide')
+    te_shadow.classList.remove('te-hide')
+
+    setTimeout(() => { TransitionEffects.init(17); }, 2000)
     document.body.setAttribute('style', `background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${width[0]}' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='${colors[0]}' fill-opacity='0.2' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`)
     var i = 1;
     var j = 1;
@@ -432,7 +437,24 @@ $(function () {
   performLogin = function () {
     if (localStorage.getItem('name') != null && localStorage.getItem('password') != null &&
       localStorage.getItem('name') == Ezz.name && localStorage.getItem('password') == Ezz.password) {
-      performAction();
+      performDancingText();
+      setTimeout(() => {
+        var container = document.querySelector('.container')
+        var controls = document.querySelector('.te-controls')
+        var wrapper = document.querySelector('.wrapper')
+        var shadow = document.createElement('div')
+        shadow.classList.add('te-shadow')
+        controls.appendChild(shadow)
+        var display = {
+          "display": ""
+        };
+        var displayNone = {
+          "display": "none"
+        };
+        Object.assign(wrapper.style, displayNone)
+        Object.assign(container.style, display)
+        performAction();
+      }, 10 * 1000)
       localStorage.removeItem('name'); localStorage.removeItem('password');
       return;
     }
@@ -475,11 +497,11 @@ $(function () {
     container.appendChild(loginButton)
     form.appendChild(container)
     var container = document.querySelector('.container')
-    document.body.insertBefore(form, container)
     var display = {
       "display": "none"
     };
     Object.assign(container.style, display)
+    document.body.insertBefore(form, container)
     loginButton = document.querySelector('#login');
     loginButton.textContent = "Login"
     loginButton.addEventListener('click', (e) => {
@@ -493,6 +515,67 @@ $(function () {
       localStorage.setItem('password', passInput.value)
       verifyUser(localStorage.getItem('name'), localStorage.getItem('password'));
     })
+  }
+  performDancingText = function () {
+    var wrapper = document.createElement('div')
+    var span1 = document.createElement('span')
+    var span2 = document.createElement('span')
+    var span3 = document.createElement('span')
+    var span4 = document.createElement('span')
+    var span5 = document.createElement('span')
+    var span6 = document.createElement('span')
+    var span7 = document.createElement('span')
+    var span8 = document.createElement('span')
+    var span9 = document.createElement('span')
+    var span10 = document.createElement('span')
+    var span11 = document.createElement('span')
+    var span12 = document.createElement('span')
+    var span13 = document.createElement('span')
+    var span14 = document.createElement('span')
+    var span15 = document.createElement('span')
+    var span16 = document.createElement('span')
+    var span17 = document.createElement('span')
+    wrapper.classList.add('wrapper')
+    span1.textContent = "H"
+    span2.textContent = "a"
+    span3.textContent = "p"
+    span4.textContent = "p"
+    span5.textContent = "y"
+    span6.textContent = "B"
+    span7.textContent = "i"
+    span8.textContent = "r"
+    span9.textContent = "t"
+    span10.textContent = "h"
+    span11.textContent = "d"
+    span12.textContent = "a"
+    span13.textContent = "y"
+    span14.textContent = "Z"
+    span15.textContent = "e"
+    span16.textContent = "z"
+    span17.textContent = "o"
+    wrapper.appendChild(span1)
+    wrapper.appendChild(span2)
+    wrapper.appendChild(span3)
+    wrapper.appendChild(span4)
+    wrapper.appendChild(span5)
+    wrapper.appendChild(span6)
+    wrapper.appendChild(span7)
+    wrapper.appendChild(span8)
+    wrapper.appendChild(span9)
+    wrapper.appendChild(span10)
+    wrapper.appendChild(span11)
+    wrapper.appendChild(span12)
+    wrapper.appendChild(span13)
+    wrapper.appendChild(span14)
+    wrapper.appendChild(span15)
+    wrapper.appendChild(span16)
+    wrapper.appendChild(span17)
+    var container = document.querySelector('.container')
+    document.body.insertBefore(wrapper, container)
+    var display = {
+      "display": "none"
+    };
+    Object.assign(container.style, display)
   }
   verifyUser = function (user, pass) {
     if (user == "Zezo" && pass == "zzz") {
