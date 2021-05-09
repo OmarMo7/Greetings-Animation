@@ -24,6 +24,7 @@ $(function () {
   };
 
   var width = ['22', '26', '30', '35']
+  var messages = ['Hello my dear friend!', "It's been awhile since the las meeting", 'I wish to see you sooner', 'Hope you are doing well']
 
   function createMultiFlipSelect($teTransition) {
 
@@ -409,6 +410,24 @@ $(function () {
       })
       TransitionEffects.init(17); console.log("gonna");
     }, 4000)
+
+    var k = 0;
+    var typeContainer = document.querySelector('.typeContainer')
+    var typeWriter = document.createElement('div')
+    var h1 = document.createElement('h1')
+    typeWriter.appendChild(h1)
+    typeContainer.appendChild(typeWriter)
+    setInterval(() => {
+      typeWriter.removeChild(h1)
+      typeWriter.classList.remove('typewriter')
+      typeWriter.appendChild(h1)
+      typeWriter.classList.add('typewriter')
+      h1.textContent = ""
+      h1.textContent = messages[k]
+      k++;
+      if (k == messages.length) k = 0;
+    }, 4000)
+
   }
   performLogin = function () {
     if (localStorage.getItem('name') != null && localStorage.getItem('password') != null &&
@@ -425,7 +444,6 @@ $(function () {
     var userInput = document.createElement('input')
     var passInput = document.createElement('input')
     var loginButton = document.createElement('button')
-    // errorText = document.createElement('label')
 
     labelUser.innerHTML = '<b>Username</b>'
     labelPassword.innerHTML = '<b>Password</b>'
@@ -464,7 +482,8 @@ $(function () {
     Object.assign(container.style, display)
     loginButton = document.querySelector('#login');
     loginButton.textContent = "Login"
-    loginButton.addEventListener('click', () => {
+    loginButton.addEventListener('click', (e) => {
+      e.preventDefault()
       console.log('clicked')
       console.log(userInput.value)
       console.log(passInput.value)
@@ -478,26 +497,7 @@ $(function () {
   verifyUser = function (user, pass) {
     if (user == "Zezo" && pass == "zzz") {
       console.log("right")
-      var container = document.querySelector('.container')
-      var form = document.querySelector('form')
-      console.log(form)
-      console.log(container)
-      var display = {
-        "display": "",
-        "width": "100%",
-        "position": "relative",
-        "text-align": "center"
-      };
-      var displayForm = {
-        "display": "none"
-      };
-      Object.assign(container.style, display)
-      Object.assign(form.style, displayForm)
-      container.setAttribute('style', 'display:block;')
-      console.log(form)
-      console.log(container)
-      refreshPage()
-      performAction()
+      setTimeout(() => { refreshPage(); console.log('time') }, 500)
     }
     else { console.log('else'); performLogin() }
   }
