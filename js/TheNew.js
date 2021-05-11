@@ -591,9 +591,6 @@ $(function () {
       for (let i = 0; i < 10; i++) {
         var snowFlake = document.createElement('div')
         snowFlake.classList.add('snowflake')
-        var font = { "font-size": `${font_size}em` };
-        console.log(font_size)
-        Object.assign(snowFlake.style, font)
         if (i == 0 || i % 3 == 0) { snowFlake.innerHTML = "&#128149" }
         else if (i == 2 || i % 2 == 0) { snowFlake.innerHTML = "&#127802" }
         else if (i == 1 || i % 1 == 0) {
@@ -603,15 +600,11 @@ $(function () {
       }
       document.querySelector('body').insertBefore(snowFlakes, document.querySelector('.wrapper'))
     }
-    else {
-      snowFlakes = document.querySelector('.snowflakes')
-      snowFlake = document.querySelectorAll('.snowflake')
-      snowFlake.forEach(flake => {
-        var font = { "font-size": `${font_size}em` };
-        console.log(font_size)
-        Object.assign(flake.style, font)
-      })
-    }
+    document.querySelectorAll('.snowflake').forEach(flake => {
+      var font = { "font-size": `${font_size}em` };
+      console.log(font_size)
+      Object.assign(flake.style, font)
+    })
 
   }
   verifyUser = function (user, pass) {
