@@ -40,10 +40,10 @@
   -webkit-transform-origin: 50% 100%;
 }
 .te-rotation1.te-show .te-front {
-  -webkit-animation: rotationFront1 0.8s linear;
+  -webkit-animation: rotationFront1 1.2s linear;
 }
 .te-rotation1.te-show .te-back {
-  -webkit-animation: rotationBack1 0.8s linear;
+  -webkit-animation: rotationBack1 1.2s linear;
 }
 @-webkit-keyframes rotationFront1 {
   0% {
@@ -75,7 +75,7 @@
 }
 /***************** Rotation2 ********************/
 .te-rotation2.te-show .te-front {
-  -webkit-animation: rotationFront2 0.8s linear;
+  -webkit-animation: rotationFront2 1.2s linear;
   -webkit-transform-origin: 50% 100%;
 }
 @-webkit-keyframes rotationFront2 {
@@ -98,7 +98,7 @@
 }
 /***************** Rotation3 ********************/
 .te-rotation3.te-show .te-front {
-  -webkit-animation: rotationFront3 0.8s linear;
+  -webkit-animation: rotationFront3 1.2s linear;
   -webkit-transform-origin: 100% 50%;
 }
 @-webkit-keyframes rotationFront3 {
@@ -121,10 +121,10 @@
   -webkit-transform-origin: 0% 50%;
 }
 .te-rotation4.te-show .te-front {
-  -webkit-animation: rotationFront4 0.8s linear;
+  -webkit-animation: rotationFront4 1.2s linear;
 }
 .te-rotation4.te-show .te-back {
-  -webkit-animation: rotationBack4 0.8s ease-in-out;
+  -webkit-animation: rotationBack4 1.2s ease-in-out;
 }
 @-webkit-keyframes rotationFront4 {
   0% {
@@ -177,7 +177,7 @@
   -webkit-transform-origin: 0% 50%;
 }
 .te-rotation5.te-show .te-front {
-  -webkit-animation: rotationFront5 0.8s linear;
+  -webkit-animation: rotationFront5 1.2s linear;
 }
 @-webkit-keyframes rotationFront5 {
   0% {

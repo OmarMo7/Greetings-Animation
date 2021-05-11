@@ -63,7 +63,7 @@
     translate3d(0, 0, 212px);
 }
 .te-cube1.te-show {
-  animation: cube1 0.5s ease-in-out;
+  animation: cube1 1.2s ease-in-out;
 }
 @keyframes cube1 {
   0% {
@@ -94,7 +94,7 @@
     translate3d(0, 0, 212px);
 }
 .te-cube2.te-show {
-  animation: cube2 0.5s ease-in-out;
+  animation: cube2 1.2s ease-in-out;
 }
 @keyframes cube2 {
   0% {
@@ -168,7 +168,7 @@
     translate3d(0, 0, 164px);
 }
 .te-cube4.te-show {
-  animation: cube4 0.5s ease-in-out;
+  animation: cube4 1.2s ease-in-out;
 }
 @keyframes cube4 {
   0% {
