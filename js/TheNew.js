@@ -24,7 +24,7 @@ $(function () {
   };
 
   var width = ['22', '26', '30', '35']
-  var messages = ['Hello my dear friend!', "It's been awhile since the las meeting", 'I wish to see you sooner', 'Hope you are doing well']
+  var messages = [' ☺️ واحشنى يا عزز كتييير  كتيير والله', "🙄😉 جاية متأخرة بس قلت احضرلك حاجة حلوة", '🤵🏿 الناس الشياكة لازملهم تهنئة شياكة', '😂 مش عاوز امسح دى من على تلفونى من ساعتها', '🤑💸 الغنى اللى بيجيب من ستار باكس', ' 🤩 العظمة تليق بك يا باش مهندس', '💞 كل سنة وانت طيب يا زيزو']
 
   function createMultiFlipSelect($teTransition) {
 
@@ -387,11 +387,11 @@ $(function () {
     var te_shadow = document.querySelector('.te-shadow')
     te_cover.classList.remove('te-hide')
     te_shadow.classList.remove('te-hide')
-
-    setTimeout(() => {
-      TransitionEffects.init(17);
-      document.body.setAttribute('style', `background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${width[0]}' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='${colors[0]}' fill-opacity='0.2' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`)
-    }, 2000)
+    performLuminance()
+    document.body.setAttribute('style', `background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${width[0]}' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='${colors[0]}' fill-opacity='0.2' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`)
+    // setTimeout(() => {
+    //   TransitionEffects.init(1);
+    // }, 5000)
 
     var i = 1;
     var j = 1;
@@ -405,7 +405,7 @@ $(function () {
       Object.assign(document.body.style, styles)
       if (i == colors.length) i = 0
       if (j == width.length) j = 0
-    }, 4000)
+    }, 6000)
     setInterval(() => {
       var imgs = document.querySelectorAll('img')
       var num = randomNumber(0, 24);
@@ -415,25 +415,37 @@ $(function () {
           img.classList.add('border-radius')
         }
       })
-      TransitionEffects.init(17); console.log("gonna");
-    }, 4000)
 
+      TransitionEffects.init(num); console.log("gonna");
+    }, 6000)
+
+    /**Typewriter function */
     var k = 0;
     var typeContainer = document.querySelector('.typeContainer')
     var typeWriter = document.createElement('div')
-    var h1 = document.createElement('h1')
-    typeWriter.appendChild(h1)
+    var text = document.createElement('div')
+    typeWriter.appendChild(text)
     typeContainer.appendChild(typeWriter)
     setInterval(() => {
-      typeWriter.removeChild(h1)
+      typeWriter.removeChild(text)
       typeWriter.classList.remove('typewriter')
-      typeWriter.appendChild(h1)
+      if (document.querySelector('.typeContainer .typewriter div') == null) {
+        typeWriter.appendChild(text)
+      }
       typeWriter.classList.add('typewriter')
-      h1.textContent = ""
-      h1.textContent = messages[k]
+      text.textContent = ""
+      text.textContent = messages[k]
+      if (text.scrollWidth >= window.screen.width - 15) {
+        text.style.fontSize = "12px"
+      }
+      else {
+        text.style.fontSize = "18px"
+      }
+      console.log(window.screen.width - 15)
+      console.log(text.scrollWidth)
       k++;
       if (k == messages.length) k = 0;
-    }, 4000)
+    }, 6000)
 
   }
   performLogin = function () {
@@ -458,7 +470,7 @@ $(function () {
         Object.assign(container.style, display)
         performAction();
         performSnowFlake(0.8);
-      }, 12 * 1000)
+      }, 10 * 1000)
       localStorage.removeItem('name'); localStorage.removeItem('password');
       return;
     }
@@ -606,6 +618,16 @@ $(function () {
       Object.assign(flake.style, font)
     })
 
+  }
+  performLuminance = function () {
+    var luminance = document.createElement('div')
+    var text = document.createElement('div')
+    luminance.classList.add('luminance')
+    text.classList.add('text')
+    text.textContent = "Zezo"
+    luminance.appendChild(text)
+
+    document.body.insertBefore(luminance, document.querySelector('.container'))
   }
   verifyUser = function (user, pass) {
     if (user == "Zezo" && pass == "zzz") {
