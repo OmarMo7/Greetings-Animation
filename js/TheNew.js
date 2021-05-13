@@ -321,7 +321,8 @@ var TransitionEffects = (function () {
         while (front.firstChild) {
           front.removeChild(front.firstChild)
         }
-        console.log('appended')
+      })
+      $teTransition.querySelectorAll("div.te-front").forEach(front => {
         front.innerHTML = `<img src='${img_front.src}' />`
       })
 
@@ -330,7 +331,8 @@ var TransitionEffects = (function () {
         while (back.firstChild) {
           back.removeChild(back.firstChild)
         }
-        console.log('appended')
+      })
+      $teTransition.querySelectorAll("div.te-back").forEach(back => {
         back.innerHTML = `<img src='${img_back.src}' />`
       })
 
@@ -375,12 +377,11 @@ performAction = function () {
     var num = randomNumber(0, 24);
     imgs.forEach(img => {
       if (!img.classList.contains('border-radius')) {
-        console.log(img)
         img.classList.add('border-radius')
       }
     })
 
-    TransitionEffects.init(num); console.log("gonna");
+    TransitionEffects.init(num)
   }, 6000)
 
   /**Typewriter function */
@@ -405,8 +406,6 @@ performAction = function () {
     else {
       text.style.fontSize = "18px"
     }
-    console.log(window.screen.width - 15)
-    console.log(text.scrollWidth)
     k++;
     if (k == messages.length) k = 0;
   }, 6000)
@@ -486,11 +485,6 @@ performLogin = function () {
   loginButton.textContent = "Login"
   loginButton.addEventListener('click', (e) => {
     e.preventDefault()
-    console.log('clicked')
-    console.log(userInput.value)
-    console.log(passInput.value)
-    console.log(localStorage.getItem('name'))
-    console.log(localStorage.getItem('password'))
     localStorage.setItem('name', userInput.value)
     localStorage.setItem('password', passInput.value)
     verifyUser(localStorage.getItem('name'), localStorage.getItem('password'));
@@ -578,7 +572,6 @@ performSnowFlake = function (font_size) {
   }
   document.querySelectorAll('.snowflake').forEach(flake => {
     var font = { "font-size": `${font_size}em` };
-    console.log(font_size)
     Object.assign(flake.style, font)
   })
 
@@ -595,8 +588,7 @@ performLuminance = function () {
 }
 verifyUser = function (user, pass) {
   if (user == "Zezo" && pass == "zzz") {
-    console.log("right")
-    setTimeout(() => { refreshPage(); console.log('time') }, 500)
+    setTimeout(() => { refreshPage(); }, 500)
   }
   else { performLogin() }
 }
