@@ -198,7 +198,11 @@ function createOtherSelect($teTransition) {
 var TransitionEffects = (function () {
   var $teWrapper = document.getElementById("te-wrapper"), //Selected only  to pick elements from
     $teCover = $teWrapper.querySelector(".te-cover"),
-    $teImages = $teWrapper.querySelectorAll(".te-images > img"),
+    $teImages = ["images/carback.jpg", "images/car.jpg", "images/pool.jpg",
+      "images/suit.jpg",
+      "images/christmas.jpg",
+      "images/starbucks.jpg",
+      "images/sun.jpg"],
     imagesCount = $teImages.length,
     current_img = 0,
     last_img = 0,
@@ -301,8 +305,8 @@ var TransitionEffects = (function () {
       current_img == imagesCount - 1
         ? ((last_img = imagesCount - 1), (current_img = 0))
         : ((last_img = current_img), ++current_img);
-      var last_img_src = $teImages.item(last_img).getAttribute("src"),
-        current_img_src = $teImages.item(current_img).getAttribute("src");
+      var last_img_src = $teImages[last_img],
+        current_img_src = $teImages[current_img];
 
 
 
