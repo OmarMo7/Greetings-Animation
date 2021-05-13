@@ -590,8 +590,8 @@ verifyUser = function (user, pass) {
   if (user == "Zezo" && pass == "zzz") {
     setTimeout(() => { refreshPage(); }, 500)
   }
-  else { performLogin() }
+  else { document.addEventListener('DOMContentLoader', () => { performLogin() }) }
 }
-performLogin();
+performLogin()
 
 
