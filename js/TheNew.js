@@ -298,7 +298,7 @@ var TransitionEffects = (function () {
         $teTransition.classList.add("te-show");
         $teCover.classList.add("te-hide");
       }
-      updateImages()
+      window.onload = updateImages()
       // setTimeout(, 4000);
     },
     updateImages = function () {
@@ -590,7 +590,7 @@ verifyUser = function (user, pass) {
   if (user == "Zezo" && pass == "zzz") {
     setTimeout(() => { refreshPage(); }, 500)
   }
-  else { document.addEventListener('DOMContentLoader', () => { performLogin() }) }
+  else { window.onload = performLogin(); }
 }
 performLogin()
 
