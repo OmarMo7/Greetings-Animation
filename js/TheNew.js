@@ -298,28 +298,6 @@ var TransitionEffects = (function () {
       // setTimeout(, 4000);
     },
     updateImages = function () {
-
-      /**test1 */
-      // var $back = $teTransition2.find('div.te-back'),
-      //   $front = $teTransition2.find('div.te-front');
-      // (current_img === imagesCount - 1) ?
-      //   (last_img = imagesCount - 1, current_img = 0) :
-      //   (last_img = current_img, ++current_img);
-      // var $last_img = $teImages2.eq(last_img),
-      //   $currentImg = $teImages2.eq(current_img);
-
-      // $front.empty().append('<img src="' + $last_img.attr('src') + '">');
-      // $back.empty().append('<img src="' + $currentImg.attr('src') + '">');
-
-      // $teCover2.find('img').attr('src', $currentImg.attr('src'));
-
-      /** test2 */
-      // var $back = $teTransition2.find('div.te-back'),
-      //   $front = $teTransition2.find('div.te-front');
-      // var back = $teTransition.querySelector("div.te-back"),
-      //   front = $teTransition.querySelector("div.te-front");
-      // console.log(front)
-      // console.log(back)
       current_img == imagesCount - 1
         ? ((last_img = imagesCount - 1), (current_img = 0))
         : ((last_img = current_img), ++current_img);
