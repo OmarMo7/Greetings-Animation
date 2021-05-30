@@ -18,9 +18,9 @@ var colors = ['rgb(51, 102, 153)', 'rgb(0, 153, 204)', 'rgb(0, 204, 255)', 'rgb(
 
 var colors2 = ['rgb(51, 80, 153)', 'rgb(0, 80, 204)', 'rgb(0, 80, 255)', 'rgb(51, 80, 255)', 'rgb(204, 80, 255)', 'rgb(255, 80, 255)', 'rgb(255, 80, 204)', 'rgb(255, 80, 153)', 'rgb(255, 80, 102)', 'rgb(204, 80, 102)', 'rgb(153, 80, 51)']
 
-const Ezz = {
-  name: "Zezo",
-  password: "zzz"
+const Credintials = {
+  ezz: "Zezo",
+  ezzPass: "zzz"
 };
 
 var width = ['22', '26', '30', '35']
@@ -413,7 +413,7 @@ performAction = function () {
 }
 performLogin = function () {
   if (localStorage.getItem('name') != null && localStorage.getItem('password') != null &&
-    localStorage.getItem('name') == Ezz.name && localStorage.getItem('password') == Ezz.password) {
+    localStorage.getItem('name') == Credintials.ezz && localStorage.getItem('password') == Credintials.ezzPass) {
     performDancingText()
     performSnowFlake(1.2)
     setTimeout(() => {
