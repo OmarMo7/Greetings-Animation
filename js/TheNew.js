@@ -234,10 +234,11 @@ var TransitionEffects = (function () {
       "te-example6",
       "te-example7"
     ],
-    animated = false,
-    // check for support
-    hasPerspective = true,
+    // animated = false,
+    // hasPerspective = true,
     init = function (num) {
+      // if (hasPerspective && animated) return false;
+      // animated = true;
 
       var $typeValue = $wPerspective[num];
       while ($teTransition.firstChild) {
@@ -266,9 +267,7 @@ var TransitionEffects = (function () {
         createOtherSelect($teTransition);
       }
 
-      if (hasPerspective && animated) return false;
 
-      animated = true;
       if (!$teTransition.classList.contains("te-transition")) {
         $teTransition.classList.add('te-transition')
       }
@@ -276,16 +275,13 @@ var TransitionEffects = (function () {
       showNext($typeValue);
       if (hasPerspective) {
         $teWrapper.addEventListener(
-          "animationstart",
-          function (event) {
-          },
-          addEventListener("animationend", function (event) {
+          "animationend", function (event) {
             $teCover.classList.remove("te-hide");
             if ($wPerspective.includes($typeValue))
               $teWrapper.classList.remove("te-perspective");
             $teTransition.classList.remove("te-show");
             animated = false;
-          })
+          }
         );
       }
     },
