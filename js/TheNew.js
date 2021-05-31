@@ -195,151 +195,145 @@ function createOtherSelect($teTransition) {
   $teTransition.appendChild(te_back)
 }
 
-var TransitionEffects = (function () {
-  var $teWrapper = document.getElementById("te-wrapper"), //Selected only  to pick elements from
-    $teCover = $teWrapper.querySelector(".te-cover"),
-    $teImages = ["images/carback.jpg", "images/car.jpg", "images/pool.jpg",
-      "images/suit.jpg",
-      "images/christmas.jpg",
-      "images/starbucks.jpg",
-      "images/sun.jpg"],
-    imagesCount = $teImages.length,
-    current_img = 0,
-    last_img = 0,
-    $teTransition = $teWrapper.querySelector(".te-transition"),
-    $wPerspective = [
-      "te-flip1",
-      "te-flip2",
-      "te-flip3",
-      "te-flip4",
-      "te-rotation1",
-      "te-rotation2",
-      "te-rotation3",
-      "te-rotation4",
-      "te-rotation5",
-      "te-multiflip1",
-      "te-multiflip2",
-      "te-multiflip3",
-      "te-cube1",
-      "te-cube2",
-      "te-cube3",
-      "te-cube4",
-      "te-unfold1",
-      "te-unfold2",
-      "te-example1",
-      "te-example2",
-      "te-example3",
-      "te-example4",
-      "te-example5",
-      "te-example6",
-      "te-example7"
-    ],
-    // animated = false,
-    // hasPerspective = true,
-    init = function (num) {
-      // if (hasPerspective && animated) return false;
-      // animated = true;
+var $teWrapper = document.getElementById("te-wrapper"), //Selected only  to pick elements from
+  $teCover = $teWrapper.querySelector(".te-cover"),
+  $teImages = ["images/carback.jpg", "images/car.jpg", "images/pool.jpg",
+    "images/suit.jpg",
+    "images/christmas.jpg",
+    "images/starbucks.jpg",
+    "images/sun.jpg"],
+  imagesCount = $teImages.length,
+  current_img = 0,
+  last_img = 0,
+  $teTransition = $teWrapper.querySelector(".te-transition"),
+  $wPerspective = [
+    "te-flip1",
+    "te-flip2",
+    "te-flip3",
+    "te-flip4",
+    "te-rotation1",
+    "te-rotation2",
+    "te-rotation3",
+    "te-rotation4",
+    "te-rotation5",
+    "te-multiflip1",
+    "te-multiflip2",
+    "te-multiflip3",
+    "te-cube1",
+    "te-cube2",
+    "te-cube3",
+    "te-cube4",
+    "te-unfold1",
+    "te-unfold2",
+    "te-example1",
+    "te-example2",
+    "te-example3",
+    "te-example4",
+    "te-example5",
+    "te-example6",
+    "te-example7"
+  ],
+  animated = false,
+  hasPerspective = true
+performAnimation = function (num) {
+  if (hasPerspective && animated) return false;
+  animated = true;
 
-      var $typeValue = $wPerspective[num];
-      while ($teTransition.firstChild) {
-        $teTransition.removeChild($teTransition.firstChild)
+  var $typeValue = $wPerspective[num];
+  while ($teTransition.firstChild) {
+    $teTransition.removeChild($teTransition.firstChild)
+  }
+  $teTransition.classList.forEach(classs => {
+    $teTransition.classList.remove(classs)
+  })
+
+  if ($typeValue.includes("multiflip")) {
+    createMultiFlipSelect($teTransition);
+  }
+  else if ($typeValue.includes("rotation")) {
+    createRotateSelect($teTransition);
+  }
+  else if ($typeValue.includes("flip")) {
+    createFlipSelect($teTransition);
+  }
+  else if ($typeValue.includes("cube")) {
+    createCubeSelect($teTransition);
+  }
+  else if ($typeValue.includes("unfold")) {
+    createUnfoldSelect($teTransition);
+  }
+  else if ($typeValue.includes("example")) {
+    createOtherSelect($teTransition);
+  }
+
+
+  if (!$teTransition.classList.contains("te-transition")) {
+    $teTransition.classList.add('te-transition')
+  }
+  $teTransition.classList.add($typeValue)
+  showNext($typeValue);
+  if (hasPerspective) {
+    $teWrapper.addEventListener(
+      "animationend", function (event) {
+        $teCover.classList.remove("te-hide");
+        if ($wPerspective.includes($typeValue))
+          $teWrapper.classList.remove("te-perspective");
+        $teTransition.classList.remove("te-show");
+        animated = false;
       }
-      $teTransition.classList.forEach(classs => {
-        $teTransition.classList.remove(classs)
-      })
+    );
+  }
+},
+  showNext = ($typeValue) => {
 
-      if ($typeValue.includes("multiflip")) {
-        createMultiFlipSelect($teTransition);
+    if (hasPerspective) {
+      if ($wPerspective.includes($typeValue)) {
+        $teWrapper.classList.add("te-perspective");
       }
-      else if ($typeValue.includes("rotation")) {
-        createRotateSelect($teTransition);
+      $teTransition.classList.add("te-show");
+      $teCover.classList.add("te-hide");
+    }
+    window.onload = updateImages()
+    // setTimeout(, 4000);
+  },
+  updateImages = function () {
+    current_img == imagesCount - 1
+      ? ((last_img = imagesCount - 1), (current_img = 0))
+      : ((last_img = current_img), ++current_img);
+    var last_img_src = $teImages[last_img],
+      current_img_src = $teImages[current_img];
+
+
+
+    var img_front = document.createElement("img");
+    var img_back = document.createElement("img");
+    img_front.src = last_img_src;
+    img_back.src = current_img_src;
+
+
+    //front
+    $teTransition.querySelectorAll("div.te-front").forEach(front => {
+      while (front.firstChild) {
+        front.removeChild(front.firstChild)
       }
-      else if ($typeValue.includes("flip")) {
-        createFlipSelect($teTransition);
+    })
+    $teTransition.querySelectorAll("div.te-front").forEach(front => {
+      front.innerHTML = `<img src='${img_front.src}' />`
+    })
+
+    //back
+    $teTransition.querySelectorAll("div.te-back").forEach(back => {
+      while (back.firstChild) {
+        back.removeChild(back.firstChild)
       }
-      else if ($typeValue.includes("cube")) {
-        createCubeSelect($teTransition);
-      }
-      else if ($typeValue.includes("unfold")) {
-        createUnfoldSelect($teTransition);
-      }
-      else if ($typeValue.includes("example")) {
-        createOtherSelect($teTransition);
-      }
+    })
+    $teTransition.querySelectorAll("div.te-back").forEach(back => {
+      back.innerHTML = `<img src='${img_back.src}' />`
+    })
 
-
-      if (!$teTransition.classList.contains("te-transition")) {
-        $teTransition.classList.add('te-transition')
-      }
-      $teTransition.classList.add($typeValue)
-      showNext($typeValue);
-      if (hasPerspective) {
-        $teWrapper.addEventListener(
-          "animationend", function (event) {
-            $teCover.classList.remove("te-hide");
-            if ($wPerspective.includes($typeValue))
-              $teWrapper.classList.remove("te-perspective");
-            $teTransition.classList.remove("te-show");
-            animated = false;
-          }
-        );
-      }
-    },
-    showNext = ($typeValue) => {
-
-      if (hasPerspective) {
-        if ($wPerspective.includes($typeValue)) {
-          $teWrapper.classList.add("te-perspective");
-        }
-        $teTransition.classList.add("te-show");
-        $teCover.classList.add("te-hide");
-      }
-      window.onload = updateImages()
-      // setTimeout(, 4000);
-    },
-    updateImages = function () {
-      current_img == imagesCount - 1
-        ? ((last_img = imagesCount - 1), (current_img = 0))
-        : ((last_img = current_img), ++current_img);
-      var last_img_src = $teImages[last_img],
-        current_img_src = $teImages[current_img];
-
-
-
-      var img_front = document.createElement("img");
-      var img_back = document.createElement("img");
-      img_front.src = last_img_src;
-      img_back.src = current_img_src;
-
-
-      //front
-      $teTransition.querySelectorAll("div.te-front").forEach(front => {
-        while (front.firstChild) {
-          front.removeChild(front.firstChild)
-        }
-      })
-      $teTransition.querySelectorAll("div.te-front").forEach(front => {
-        front.innerHTML = `<img src='${img_front.src}' />`
-      })
-
-      //back
-      $teTransition.querySelectorAll("div.te-back").forEach(back => {
-        while (back.firstChild) {
-          back.removeChild(back.firstChild)
-        }
-      })
-      $teTransition.querySelectorAll("div.te-back").forEach(back => {
-        back.innerHTML = `<img src='${img_back.src}' />`
-      })
-
-      var cover = $teCover.querySelector("img");
-      cover.setAttribute("src", current_img_src);
-    };
-
-
-
-  return { init: init };
-})();
+    var cover = $teCover.querySelector("img");
+    cover.setAttribute("src", current_img_src);
+  }
 function refreshPage() {
   window.location.reload();
 }
@@ -377,7 +371,7 @@ performAction = function () {
       }
     })
 
-    TransitionEffects.init(num)
+    performAnimation(num)
   }, 6000)
 
   /**Typewriter function */
